@@ -1,9 +1,11 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using CodeFirstEmployee.contexts;
 using CodeFirstEmployee.models;
 using Services.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -24,12 +26,15 @@ namespace ShopsApi
         {
             var builder = new ContainerBuilder();
             var config = GlobalConfiguration.Configuration;
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterWebApiFilterProvider(config);
             builder.RegisterWebApiModelBinderProvider();
-            builder.RegisterModule(new DataModule("ShopContext"));
+            //builder.RegisterModule(new DataModule("ShopContext"));
             builder.RegisterType<EmployeeTypeRepository>().As<IRepository<EmployeeType>>();
             builder.RegisterType<EmployeeRepository>().As<IRepository<Employee>>();
+            builder.Register(c => new ShopContext("ShopContext")).As<DbContext>().InstancePerRequest();
+            builder.Register(c => new ShopContext()).As<DbContext>().InstancePerRequest();
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             

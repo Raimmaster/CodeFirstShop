@@ -13,7 +13,9 @@ namespace CodeFirstEmployee.contexts
 
         private string _connectionString;
 
-        public ShopContext() : base("name=ShopContext") { }
+        public ShopContext() : base("name=ShopContext") {
+            base.Configuration.LazyLoadingEnabled = false;
+        }
 
         public ShopContext(string connectionString) : this()
         {

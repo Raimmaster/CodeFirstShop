@@ -6,7 +6,7 @@ namespace Services.Repositories
 {
     public class EmployeeRepository : IRepository<Employee>
     {
-        private ShopContext _database;
+        private ShopContext _database = new ShopContext();
 
 
         public IQueryable<Employee> GetAllEntities()
