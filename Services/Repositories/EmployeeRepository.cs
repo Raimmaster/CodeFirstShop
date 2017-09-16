@@ -37,8 +37,11 @@ namespace Services.Repositories
             }
         }
 
-        public void DeleteEntity(Employee entity)
+        public void DeleteEntity(int id)
         {
+            var entity = _database.Employees.SingleOrDefault(x => x.EmployeeId == id);
+
+            _database.Employees.Attach(entity);
             _database.Employees.Remove(entity);
             _database.SaveChanges();
         }

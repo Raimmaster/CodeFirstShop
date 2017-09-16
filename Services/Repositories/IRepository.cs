@@ -8,6 +8,6 @@ namespace Services.Repositories
         TEntity GetById(int id);
         void InsertEntity(TEntity entity);
         void UpdateEntity(TEntity entity);
-        void DeleteEntity(TEntity entity);
+        void DeleteEntity(int id);
     }
 }

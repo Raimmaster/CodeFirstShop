@@ -1,6 +1,8 @@
 namespace CodeFirstEmployee.Migrations
 {
+    using CodeFirstEmployee.models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -9,7 +11,8 @@ namespace CodeFirstEmployee.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(CodeFirstEmployee.contexts.ShopContext context)
@@ -26,6 +29,21 @@ namespace CodeFirstEmployee.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            var types = new List<EmployeeType>
+            {
+                new EmployeeType { EmployeeTypeId=1, EmployeeTypeName="Gato", Salary=100 },
+                new EmployeeType { EmployeeTypeId=2, EmployeeTypeName="Tigre", Salary=100000 }
+            };
+            types.ForEach(t => context.EmployeeTypes.Add(t));
+            context.SaveChanges();
+
+            var emps = new List<Employee>
+            {
+                new Employee { EmployeeId=1, EmployeeName="Raim", EmployeeTypeId=1 },
+                new Employee { EmployeeId=2, EmployeeName="Nexer", EmployeeTypeId=2 }
+            };
+            emps.ForEach(e => context.Employees.Add(e));
+            context.SaveChanges();
         }
     }
 }

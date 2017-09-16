@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using CodeFirstEmployee.contexts;
 
-namespace ShopApi
+namespace ShopsApi
 {
     public class DataModule : Module
     {
@@ -14,7 +14,7 @@ namespace ShopApi
 
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(c => new ShopContext(_connectionString)).InstancePerRequest();
+            builder.Register(c => new ShopContext(_connectionString)).As<ShopContext>().InstancePerRequest();
             base.Load(builder);
         }
     }

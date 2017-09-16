@@ -8,8 +8,11 @@ namespace Services.Repositories
     {
         private ShopContext _database;
 
-        public void DeleteEntity(ShopAttendances entity)
+        public void DeleteEntity(int id)
         {
+            var entity = _database.Attendances.SingleOrDefault(x => x.AttendanceId == id);
+
+            _database.Attendances.Attach(entity);
             _database.Attendances.Remove(entity);
             _database.SaveChanges();
         }
@@ -22,7 +25,7 @@ namespace Services.Repositories
 
         public ShopAttendances GetById(int id)
         {
-            var attendance = _database.Attendances.SingleOrDefault(x => x.AttendaceId == id);
+            var attendance = _database.Attendances.SingleOrDefault(x => x.AttendanceId == id);
             return attendance;
         }
 
@@ -34,7 +37,7 @@ namespace Services.Repositories
 
         public void UpdateEntity(ShopAttendances entity)
         {
-            var attendance = _database.Attendances.SingleOrDefault(x => x.AttendaceId == entity.AttendaceId);
+            var attendance = _database.Attendances.SingleOrDefault(x => x.AttendanceId == entity.AttendanceId);
 
             if(attendance != null)
             {

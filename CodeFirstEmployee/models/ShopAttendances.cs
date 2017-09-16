@@ -8,7 +8,7 @@ namespace CodeFirstEmployee.models
     public class ShopAttendances
     {
         [Key]
-        public int AttendaceId { get; set; }
+        public int AttendanceId { get; set; }
         [ForeignKey("employee")]
         public int EmployeeId { get; set; }
         [ForeignKey("shop")]
