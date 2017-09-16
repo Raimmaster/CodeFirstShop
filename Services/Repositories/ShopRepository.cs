@@ -8,6 +8,11 @@ namespace Services.Repositories
     {
         private ShopContext _database;
 
+        public ShopRepository(ShopContext ctx)
+        {
+            _database = ctx;
+        }
+
         public void DeleteEntity(int id)
         {
             var entity = _database.Shops.SingleOrDefault(x => x.ShopId == id);

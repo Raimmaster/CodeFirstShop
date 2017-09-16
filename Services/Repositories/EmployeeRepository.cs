@@ -1,13 +1,18 @@
 ﻿using System.Linq;
 using CodeFirstEmployee.contexts;
 using CodeFirstEmployee.models;
+using System.Data.Entity;
 
 namespace Services.Repositories
 {
     public class EmployeeRepository : IRepository<Employee>
     {
-        private ShopContext _database = new ShopContext();
+        private ShopContext _database;// = new ShopContext();
 
+        public EmployeeRepository(ShopContext ctx)
+        {
+            this._database = ctx;
+        }
 
         public IQueryable<Employee> GetAllEntities()
         {

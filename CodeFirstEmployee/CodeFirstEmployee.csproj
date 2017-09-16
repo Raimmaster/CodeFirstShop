@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201709160526592_InitialCatalog.Designer.cs">
       <DependentUpon>201709160526592_InitialCatalog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709161732214_ForeignKeyChanges-Attendances.cs" />
+    <Compile Include="Migrations\201709161732214_ForeignKeyChanges-Attendances.Designer.cs">
+      <DependentUpon>201709161732214_ForeignKeyChanges-Attendances.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="models\Employee.cs" />
     <Compile Include="models\ShopAttendances.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709160526592_InitialCatalog.resx">
       <DependentUpon>201709160526592_InitialCatalog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709161732214_ForeignKeyChanges-Attendances.resx">
+      <DependentUpon>201709161732214_ForeignKeyChanges-Attendances.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -55,7 +55,7 @@ namespace CodeFirstEmployee.Migrations
                     })
                 .PrimaryKey(t => t.ShopId);
             
-            CreateTable(
+            /*CreateTable(
                 "dbo.ShopEmployee",
                 c => new
                     {
@@ -67,7 +67,7 @@ namespace CodeFirstEmployee.Migrations
                 .ForeignKey("dbo.Employee", t => t.Employee_EmployeeId, cascadeDelete: true)
                 .Index(t => t.Shop_ShopId)
                 .Index(t => t.Employee_EmployeeId);
-            
+            */
         }
         
         public override void Down()

@@ -9,9 +9,9 @@ namespace Services.Repositories
     {
         private ShopContext _database;
 
-        public EmployeeTypeRepository()
+        public EmployeeTypeRepository(ShopContext ctx)
         {
-            _database = new ShopContext();
+            _database = ctx;
         }
 
         public IQueryable<EmployeeType> GetAllEntities()

@@ -33,8 +33,8 @@ namespace ShopsApi
             //builder.RegisterModule(new DataModule("ShopContext"));
             builder.RegisterType<EmployeeTypeRepository>().As<IRepository<EmployeeType>>();
             builder.RegisterType<EmployeeRepository>().As<IRepository<Employee>>();
-            builder.Register(c => new ShopContext("ShopContext")).As<DbContext>().InstancePerRequest();
-            builder.Register(c => new ShopContext()).As<DbContext>().InstancePerRequest();
+            builder.Register(c => new ShopContext("ShopContext")).InstancePerRequest();
+            //builder.Register(c => new ShopContext()).InstancePerRequest();
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             
